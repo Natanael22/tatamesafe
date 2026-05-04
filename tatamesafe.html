@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TatameSafe — Proteção no Jiu-Jitsu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#F8F6F2;font-family:'DM Sans',sans-serif;color:#2A2825}
+a{text-decoration:none}
+
+.nav{background:#F8F6F2;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EAE7E3;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:#2A2825;letter-spacing:-0.01em}
+.nav-logo em{font-style:italic;color:#3B7D52}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:13px;color:#7A7672;font-weight:400;transition:color 0.2s}
+.nav-links a:hover{color:#2A2825}
+.nav-cta{background:#2A2825;color:#F8F6F2 !important;padding:10px 20px;border-radius:100px;font-size:13px;font-weight:500;transition:opacity 0.2s !important}
+.nav-cta:hover{opacity:0.85}
+
+.hero{padding:80px 48px 72px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:#EBF3EE;border-radius:100px;padding:6px 14px;margin-bottom:28px}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:#3B7D52;flex-shrink:0}
+.hero-eyebrow-text{font-size:11px;font-weight:500;color:#2A6640;letter-spacing:0.06em;text-transform:uppercase}
+h1{font-family:'Fraunces',serif;font-size:52px;font-weight:300;line-height:1.12;color:#1C1A18;letter-spacing:-0.02em;margin-bottom:20px}
+h1 em{font-style:italic;color:#3B7D52}
+.hero-p{font-size:16px;line-height:1.75;color:#5C5955;font-weight:400;margin-bottom:36px;max-width:440px}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:24px}
+.btn-primary{background:#2A2825;color:#F8F6F2;padding:15px 30px;border-radius:100px;font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.2s}
+.btn-primary:hover{opacity:0.85}
+.btn-secondary{background:transparent;border:1px solid #C8C4BE;color:#2A2825;padding:15px 30px;border-radius:100px;font-size:14px;font-weight:400;font-family:'DM Sans',sans-serif;transition:background 0.2s}
+.btn-secondary:hover{background:#EAE7E3}
+.pill-group{display:flex;gap:8px;flex-wrap:wrap}
+.pill{background:#FFFFFF;border:1px solid #EAE7E3;border-radius:100px;padding:5px 12px;font-size:12px;color:#5C5955}
+
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;padding:40px 0}
+.phone-hero{width:210px;background:#FFFFFF;border-radius:36px;border:1px solid #E4E0DB;overflow:hidden;position:relative;z-index:2;box-shadow:0 4px 32px rgba(0,0,0,0.08)}
+.phone-inner{padding:44px 18px 22px}
+.ph-notch{width:74px;height:20px;background:#FFFFFF;border-radius:0 0 13px 13px;position:absolute;top:0;left:50%;transform:translateX(-50%);border:1px solid #E4E0DB;border-top:none;z-index:5}
+.ph-status{display:flex;justify-content:space-between;margin-bottom:20px;padding:0 2px}
+.ph-time{font-size:11px;font-weight:600;color:#2A2825}
+.anon-strip{background:#EBF3EE;border-radius:8px;padding:8px 10px;display:flex;align-items:center;gap:6px;margin-bottom:16px}
+.anon-label{font-size:10px;color:#2A6640;font-weight:500}
+.ph-title{font-family:'Fraunces',serif;font-size:15px;font-weight:300;color:#2A2825;margin-bottom:4px;line-height:1.3}
+.ph-title em{font-style:italic;color:#3B7D52}
+.ph-sub{font-size:10px;color:#8F8B85;margin-bottom:16px}
+.proto-box{background:#1C1A18;border-radius:12px;padding:14px;text-align:center;margin-bottom:14px}
+.proto-hint{font-size:8px;color:#6A8F6A;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.proto-code{font-family:'Fraunces',serif;font-size:16px;font-weight:300;color:#A8E6BE;letter-spacing:0.08em}
+.track-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.track-ic{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.track-label{font-size:10px;color:#2A2825;font-weight:500}
+.track-meta{font-size:9px;color:#B0ABA6;margin-left:auto}
+.float-card{position:absolute;background:#FFFFFF;border-radius:16px;border:1px solid #E4E0DB;padding:14px 16px;box-shadow:0 2px 20px rgba(0,0,0,0.07)}
+.fc1{top:10px;left:-20px;z-index:3;width:160px}
+.fc2{bottom:20px;right:-20px;z-index:3;width:150px}
+.fc-label{font-size:9px;color:#8F8B85;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.fc-val{font-family:'Fraunces',serif;font-size:17px;font-weight:300;color:#1C1A18}
+.fc-sub{font-size:10px;color:#3B7D52;margin-top:2px;font-weight:500}
+.selo-row{display:flex;gap:4px;margin-top:6px}
+.selo-dot{width:8px;height:8px;border-radius:50%}
+
+.divider{height:1px;background:#EAE7E3;margin:0 48px}
+
+.section{padding:80px 48px;max-width:1200px;margin:0 auto}
+.section-full{padding:80px 48px}
+.section-label{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#3B7D52;margin-bottom:12px}
+h2{font-family:'Fraunces',serif;font-size:38px;font-weight:300;line-height:1.2;color:#1C1A18;margin-bottom:16px;letter-spacing:-0.015em}
+h2 em{font-style:italic;color:#3B7D52}
+.section-p{font-size:15px;line-height:1.75;color:#5C5955;max-width:520px}
+
+.three-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.feat-card{background:#FFFFFF;border-radius:20px;border:1px solid #EAE7E3;padding:32px 28px;transition:border-color 0.2s}
+.feat-card:hover{border-color:#B8D4C0}
+.feat-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+h3{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:#1C1A18;margin-bottom:10px;line-height:1.3}
+h3 em{font-style:italic;color:#3B7D52}
+.feat-p{font-size:14px;line-height:1.65;color:#7A7672}
+
+.two-cols{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.step-list{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:22px;padding:26px 0;border-bottom:1px solid #EAE7E3}
+.step:last-child{border-bottom:none}
+.step-num{font-family:'Fraunces',serif;font-size:30px;font-weight:300;color:#D4CFC9;flex-shrink:0;line-height:1;width:34px}
+.step-h{font-size:15px;font-weight:500;color:#2A2825;margin-bottom:6px}
+.step-p{font-size:13px;color:#8F8B85;line-height:1.6}
+
+.selos-bg{background:#FFFFFF}
+.selos-inner{max-width:1200px;margin:0 auto;padding:80px 48px}
+.selos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.selo-card{border-radius:20px;padding:30px 26px;border:1px solid #EAE7E3;transition:border-color 0.2s}
+.selo-card:hover{border-color:#B8D4C0}
+.selo-tag{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:4px 12px;border-radius:100px;display:inline-block;margin-bottom:18px}
+.selo-h{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:#1C1A18;margin-bottom:14px}
+.selo-items{display:flex;flex-direction:column;gap:10px}
+.selo-item{display:flex;align-items:center;gap:10px;font-size:13px;color:#5C5955}
+.check-ic{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#EAE7E3;border:1px solid #EAE7E3;border-radius:20px;overflow:hidden;margin-top:60px}
+.stat-cell{background:#FFFFFF;padding:36px 32px;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:48px;font-weight:300;color:#1C1A18;line-height:1;margin-bottom:8px}
+.stat-num em{font-style:italic;color:#3B7D52}
+.stat-label{font-size:13px;color:#8F8B85;max-width:160px;margin:0 auto;line-height:1.5}
+
+.visual-col{background:#FFFFFF;border-radius:20px;border:1px solid #EAE7E3;padding:32px 28px}
+.mini-card{background:#F8F6F2;border-radius:14px;padding:16px;margin-bottom:10px;display:flex;align-items:center;gap:12px;transition:background 0.2s}
+.mini-card:hover{background:#EEF5F1}
+.mc-avatar{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:15px;font-weight:400;flex-shrink:0}
+.mc-name{font-size:13px;font-weight:500;color:#2A2825}
+.mc-meta{font-size:11px;color:#8F8B85;margin-top:2px}
+.mc-badge{margin-left:auto;font-size:9px;font-weight:600;padding:4px 9px;border-radius:100px;white-space:nowrap}
+.badge-ouro{background:#FEF3DC;color:#9A6B00}
+.badge-prata{background:#EDECF5;color:#4A4875}
+.badge-bronze{background:#FBF0E8;color:#8A4A1A}
+.mini-anon{background:#EBF3EE;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-top:6px}
+.mini-anon-ic{width:32px;height:32px;border-radius:50%;background:#3B7D52;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mini-anon-label{font-size:12px;font-weight:500;color:#1C4A2A}
+.mini-anon-sub{font-size:11px;color:#5A8A6A;margin-top:2px}
+
+.quote-section{background:#EBF3EE;padding:88px 48px;text-align:center}
+.quote-mark{font-family:'Fraunces',serif;font-size:72px;color:#A8C9B4;line-height:0.5;display:block;margin-bottom:28px}
+.quote-text{font-family:'Fraunces',serif;font-size:28px;font-weight:300;font-style:italic;color:#1C1A18;line-height:1.45;max-width:640px;margin:0 auto 22px;letter-spacing:-0.01em}
+.quote-attr{font-size:13px;color:#5C5955}
+
+.cta-section{background:#1C1A18;padding:96px 48px;text-align:center}
+.cta-eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #3B5C45;border-radius:100px;padding:6px 16px;margin-bottom:30px}
+.cta-eyebrow-text{font-size:11px;color:#7AAD8A;letter-spacing:0.06em;text-transform:uppercase;font-weight:500}
+.cta-h2{font-family:'Fraunces',serif;font-size:42px;font-weight:300;color:#F8F6F2;line-height:1.18;margin-bottom:18px;letter-spacing:-0.02em}
+.cta-h2 em{font-style:italic;color:#7AAD8A}
+.cta-p{font-size:15px;color:#8F8B85;line-height:1.75;max-width:500px;margin:0 auto 40px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-light{background:#F8F6F2;color:#1C1A18;padding:15px 30px;border-radius:100px;font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;transition:opacity 0.2s}
+.btn-light:hover{opacity:0.9}
+.btn-outline-light{background:transparent;border:1px solid #3B5C45;color:#F8F6F2;padding:15px 30px;border-radius:100px;font-size:14px;font-weight:400;font-family:'DM Sans',sans-serif;transition:border-color 0.2s}
+.btn-outline-light:hover{border-color:#7AAD8A}
+
+footer{background:#F8F6F2;padding:40px 48px;border-top:1px solid #EAE7E3;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Fraunces',serif;font-size:18px;font-weight:300;color:#2A2825}
+.footer-logo em{font-style:italic;color:#3B7D52}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:#8F8B85;transition:color 0.2s}
+.footer-links a:hover{color:#2A2825}
+.footer-copy{font-size:12px;color:#B0ABA6}
+
+@media(max-width:900px){
+  .hero,.two-cols{grid-template-columns:1fr;gap:40px}
+  .hero-visual{display:none}
+  .three-cols,.selos-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr}
+  .nav-links a:not(.nav-cta){display:none}
+  h1{font-size:36px}
+  h2{font-size:28px}
+  .hero,.section,.section-full,.selos-inner,.quote-section,.cta-section{padding-left:24px;padding-right:24px}
+  .divider{margin:0 24px}
+  footer{flex-direction:column;gap:20px;text-align:center}
+  .footer-links{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">Tatame<em>Safe</em></div>
+  <div class="nav-links">
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#academias">Academias</a>
+    <a href="#familias">Para famílias</a>
+    <a href="#fazer-parte" class="nav-cta">Fazer parte</a>
+  </div>
+</nav>
+
+<section style="max-width:1200px;margin:0 auto">
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">
+        <div class="hero-dot"></div>
+        <span class="hero-eyebrow-text">Proteção no jiu-jitsu</span>
+      </div>
+      <h1>O tatame merece ser um lugar <em>seguro</em></h1>
+      <p class="hero-p">O TatameSafe é uma plataforma que conecta famílias a academias certificadas, oferece um canal anônimo de denúncia e apoia instrutores com capacitação em proteção e prevenção.</p>
+      <div class="hero-actions">
+        <a href="#fazer-parte" class="btn-primary">
+          Conhecer o projeto
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#academias" class="btn-secondary">Ver academias</a>
+      </div>
+      <div class="pill-group">
+        <span class="pill">100% anônimo</span>
+        <span class="pill">LGPD compliant</span>
+        <span class="pill">Gratuito para famílias</span>
+        <span class="pill">Certificado oficial</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="float-card fc1">
+        <div class="fc-label">Academia verificada</div>
+        <div class="fc-val">Gracie Osasco</div>
+        <div class="fc-sub">Selo Ouro · Ativo</div>
+        <div class="selo-row">
+          <div class="selo-dot" style="background:#3B7D52"></div>
+          <div class="selo-dot" style="background:#3B7D52"></div>
+          <div class="selo-dot" style="background:#3B7D52"></div>
+          <div class="selo-dot" style="background:#D4CFC9"></div>
+          <div class="selo-dot" style="background:#D4CFC9"></div>
+        </div>
+      </div>
+      <div class="phone-hero">
+        <div class="ph-notch"></div>
+        <div class="phone-inner">
+          <div class="ph-status">
+            <span class="ph-time">9:41</span>
+            <div style="display:flex;gap:3px;align-items:center">
+              <div style="width:10px;height:7px;border:1px solid #2A2825;border-radius:1px;position:relative"><div style="position:absolute;left:1px;top:1px;bottom:1px;width:55%;background:#2A2825;border-radius:.5px"></div></div>
+            </div>
+          </div>
+          <div class="anon-strip">
+            <svg width="12" height="13" viewBox="0 0 12 13" fill="none"><path d="M6 1.5C4.1 1.5 2.5 3.1 2.5 5v.8H2v5.7h8V5.8h-.5V5C9.5 3.1 7.9 1.5 6 1.5z" stroke="#3B7D52" stroke-width="1"/><circle cx="6" cy="8.3" r=".8" fill="#3B7D52"/></svg>
+            <span class="anon-label">Você está anônimo</span>
+          </div>
+          <div class="ph-title">Denúncia <em>registrada</em></div>
+          <div class="ph-sub">Sua identidade está protegida.</div>
+          <div class="proto-box">
+            <div class="proto-hint">Protocolo</div>
+            <div class="proto-code">TS · 2025 · X3K9</div>
+          </div>
+          <div class="track-row"><div class="track-ic" style="background:#3B7D52"></div><span class="track-label">Recebida</span><span class="track-meta">Hoje · 09:41</span></div>
+          <div class="track-row"><div class="track-ic" style="background:#3B7D52"></div><span class="track-label">Em triagem</span><span class="track-meta">SLA 24h</span></div>
+          <div class="track-row"><div class="track-ic" style="background:#E4E0DB"></div><span class="track-label" style="color:#B0ABA6">Em apuração</span><span class="track-meta">—</span></div>
+        </div>
+      </div>
+      <div class="float-card fc2">
+        <div class="fc-label">Famílias protegidas</div>
+        <div class="fc-val">+2.400</div>
+        <div class="fc-sub">em 3 estados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div id="familias">
+  <div class="section">
+    <div class="section-label">Para quem é</div>
+    <h2>Três pilares de <em>proteção</em></h2>
+    <p class="section-p">O TatameSafe foi construído para cada pessoa que entra no tatame — seja criança, adulto ou profissional.</p>
+    <div class="three-cols">
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#EBF3EE">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L4 5.5v5.5c0 3.8 2.8 7.4 7 8.5 4.2-1.1 7-4.7 7-8.5V5.5L11 2z" stroke="#3B7D52" stroke-width="1.4" stroke-linejoin="round"/><path d="M7.5 11l2.5 2.5 4.5-4.5" stroke="#3B7D52" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Denúncia <em>anônima</em></h3>
+        <p class="feat-p">Canal seguro para registrar ocorrências sem medo de represálias. Nenhum dado pessoal é necessário. Protocolo gerado localmente no seu dispositivo.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#F0EDFA">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#7B6ED6" stroke-width="1.4"/><path d="M11 7v4l3.5 2" stroke="#7B6ED6" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Academias <em>certificadas</em></h3>
+        <p class="feat-p">Selos verificados indicam que a academia cumpre práticas de proteção. Pais confirmam o ambiente com QR Code antes de matricular o filho.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#FEF3DC">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2.3 6.2H20l-5.4 3.9 2.1 6.4L11 14.6 5.3 18.5l2.1-6.4L2 8.2h6.7z" stroke="#9A6B00" stroke-width="1.3" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Capacitação <em>contínua</em></h3>
+        <p class="feat-p">Trilha de cursos para instrutores em proteção de menores, prevenção ao assédio e inclusão de crianças atípicas — com certificação oficial.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div id="como-funciona">
+  <div class="section">
+    <div class="two-cols">
+      <div>
+        <div class="section-label">Como funciona</div>
+        <h2 style="margin-bottom:40px">Simples para quem <em>precisa</em></h2>
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-h">Acesse sem criar conta</div>
+              <p class="step-p">Você não precisa de e-mail nem senha. O canal de denúncia é acessado anonimamente — sem qualquer identificação.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-h">Descreva o que aconteceu</div>
+              <p class="step-p">Um formulário guiado, em linguagem acessível, ajuda a descrever a situação com segurança. Você pode anexar evidências opcionalmente.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-h">Receba seu protocolo</div>
+              <p class="step-p">Um código único é gerado — só você tem acesso. Use para acompanhar o andamento sem revelar sua identidade.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div>
+              <div class="step-h">Triagem em até 24 horas</div>
+              <p class="step-p">Nossa equipe analisa e encaminha para as autoridades competentes. Em casos urgentes, o Conselho Tutelar é acionado imediatamente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="visual-col" id="academias">
+        <div class="section-label" style="margin-bottom:20px">Academias próximas</div>
+        <div class="mini-card">
+          <div class="mc-avatar" style="background:#EBF3EE;color:#2A6640">G</div>
+          <div><div class="mc-name">Gracie Osasco</div><div class="mc-meta">1,2 km · Jiu-Jitsu</div></div>
+          <span class="mc-badge badge-ouro">Ouro</span>
+        </div>
+        <div class="mini-card">
+          <div class="mc-avatar" style="background:#EDECF5;color:#4A4875">R</div>
+          <div><div class="mc-name">Royce BJJ</div><div class="mc-meta">2,8 km · BJJ</div></div>
+          <span class="mc-badge badge-prata">Prata</span>
+        </div>
+        <div class="mini-card" style="margin-bottom:20px">
+          <div class="mc-avatar" style="background:#FBF0E8;color:#8A4A1A">N</div>
+          <div><div class="mc-name">Nova União</div><div class="mc-meta">3,4 km · BJJ</div></div>
+          <span class="mc-badge badge-bronze">Bronze</span>
+        </div>
+        <div class="mini-anon">
+          <div class="mini-anon-ic">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C5.8 2 4 3.8 4 6v.8H3v6.5h10V6.8h-1V6C12 3.8 10.2 2 8 2z" stroke="white" stroke-width="1.1"/><circle cx="8" cy="9.5" r="1" fill="white"/></svg>
+          </div>
+          <div>
+            <div class="mini-anon-label">Denúncia 100% anônima</div>
+            <div class="mini-anon-sub">Nenhum dado pessoal é armazenado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="selos-bg">
+  <div class="selos-inner">
+    <div class="section-label">Certificação</div>
+    <h2>Um padrão que famílias <em>confiam</em></h2>
+    <p class="section-p">Assim como selos sanitários em restaurantes, o TatameSafe cria um padrão verificável de segurança para academias de jiu-jitsu em todo o Brasil.</p>
+    <div class="selos-grid">
+      <div class="selo-card">
+        <span class="selo-tag" style="background:#FBF0E8;color:#8A4A1A">Bronze</span>
+        <div class="selo-h">Comprometida</div>
+        <div class="selo-items">
+          <div class="selo-item"><div class="check-ic" style="background:#FBF0E8"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#8A4A1A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Cadastro completo e verificado</div>
+          <div class="selo-item"><div class="check-ic" style="background:#FBF0E8"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#8A4A1A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Termos de compromisso assinados</div>
+          <div class="selo-item"><div class="check-ic" style="background:#FBF0E8"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#8A4A1A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Sem denúncias ativas graves</div>
+        </div>
+      </div>
+      <div class="selo-card">
+        <span class="selo-tag" style="background:#EDECF5;color:#4A4875">Prata</span>
+        <div class="selo-h">Capacitada</div>
+        <div class="selo-items">
+          <div class="selo-item"><div class="check-ic" style="background:#EDECF5"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#4A4875" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Todos os critérios Bronze</div>
+          <div class="selo-item"><div class="check-ic" style="background:#EDECF5"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#4A4875" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Curso de Proteção de Menores</div>
+          <div class="selo-item"><div class="check-ic" style="background:#EDECF5"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#4A4875" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Avaliação mínima 4,0 das famílias</div>
+        </div>
+      </div>
+      <div class="selo-card" style="border-color:#3B7D52;background:#F4FAF6">
+        <span class="selo-tag" style="background:#EBF3EE;color:#2A6640">Ouro</span>
+        <div class="selo-h">Referência</div>
+        <div class="selo-items">
+          <div class="selo-item"><div class="check-ic" style="background:#EBF3EE"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#2A6640" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Todos os critérios Prata</div>
+          <div class="selo-item"><div class="check-ic" style="background:#EBF3EE"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#2A6640" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Trilha completa de capacitação</div>
+          <div class="selo-item"><div class="check-ic" style="background:#EBF3EE"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#2A6640" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Verificação presencial semestral</div>
+          <div class="selo-item"><div class="check-ic" style="background:#EBF3EE"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 4.5l2 2 3-3" stroke="#2A6640" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>QR Code verificável na porta</div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-cell"><div class="stat-num">24<em>h</em></div><div class="stat-label">triagem de toda denúncia recebida</div></div>
+      <div class="stat-cell"><div class="stat-num"><em>0</em></div><div class="stat-label">dados pessoais necessários para denunciar</div></div>
+      <div class="stat-cell"><div class="stat-num">3</div><div class="stat-label">cursos de capacitação para instrutores</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="quote-section">
+  <span class="quote-mark">"</span>
+  <p class="quote-text">O tatame deve ser um lugar de crescimento, não de medo. Toda criança merece treinar com segurança.</p>
+  <p class="quote-attr">Princípio fundador do TatameSafe</p>
+</section>
+
+<section class="cta-section" id="fazer-parte">
+  <div class="cta-eyebrow">
+    <div style="width:6px;height:6px;border-radius:50%;background:#7AAD8A;flex-shrink:0"></div>
+    <span class="cta-eyebrow-text">Faça parte da mudança</span>
+  </div>
+  <h2 class="cta-h2">Junte-se a quem acredita num jiu-jitsu <em>melhor</em></h2>
+  <p class="cta-p">Seja você uma família buscando uma academia segura, um instrutor que quer se certificar ou uma academia comprometida com a proteção.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-light">Sou família ou aluno</a>
+    <a href="#" class="btn-outline-light">Sou academia ou instrutor</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Tatame<em>Safe</em></div>
+  <div class="footer-links">
+    <a href="#">Privacidade</a>
+    <a href="#">Termos</a>
+    <a href="#">Contato</a>
+    <a href="#">LGPD</a>
+  </div>
+  <div class="footer-copy">© 2025 TatameSafe</div>
+</footer>
+
+</body>
+</html>
